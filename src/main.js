@@ -1,48 +1,75 @@
 document.getElementsByClassName('container')[0].style.display = "block";
 
-function next(id){
-  document.getElementsByClassName('container')[id-1].style.display = "none";
-  document.getElementsByClassName('container')[id].style.display = "block";
-}
+  let secondsLeft = 15;
+  const timer = document.getElementById("timer");
+  let countdownTimer;
 
-function result(){
-  var score = 0;
-  if(document.getElementById('correct1').checked) {
-    score++;
+  function countdown() {
+    timer.textContent = "Você tem: " + secondsLeft + " segundos";
+
+    if (secondsLeft === 0) {
+      clearInterval(countdownTimer);
+      timer.textContent = "Tempo esgotado!";
+      // Coloque aqui a ação que deseja tomar quando o tempo acabar, como mostrar o resultado final ou avançar para a próxima questão
+      showResult();
+    } else {
+      secondsLeft--;
+    }
   }
-  if(document.getElementById('correct2').checked) {
-    score++;
+
+  function showResult() {
+    const score = result();
+    const resultado = "Você fez: " + score + " pontos";
+
+    resultText.textContent = resultado;
+    modal.style.display = "block";
   }
-  if(document.getElementById('correct3').checked) {
-    score++;
+
+  function next(id) {
+    clearInterval(countdownTimer);
+    secondsLeft = 15;
+    countdownTimer = setInterval(countdown, 1000);
+
+    document.getElementsByClassName('container')[id - 1].style.display = "none";
+    document.getElementsByClassName('container')[id].style.display = "block";
   }
-  return score;
-}
 
-var modal = document.getElementById("resultado");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
-var resultText = document.getElementById("resultText");
+  function result() {
+    let score = 0;
+    if (document.getElementById('correct1').checked) {
+      score++;
+    }
+    if (document.getElementById('correct2').checked) {
+      score++;
+    }
+    if (document.getElementById('correct3').checked) {
+      score++;
+    }
+    return score;
+  }
 
-btn.onclick = function() {
-  var score = result();
-  var resultado = "Você fez: " + score + " " + "pontos";
+  const modal = document.getElementById("resultado");
+  const btn = document.getElementById("myBtn");
+  const span = document.getElementsByClassName("close")[0];
+  const resultText = document.getElementById("resultText");
 
-  resultText.textContent = resultado;
-  modal.style.display = "block";
-}
+  btn.onclick = function () {
+    const score = result();
+    const resultado = "Você fez: " + score + " pontos";
 
-span.onclick = function() {
-  modal.style.display = "none";
-}
+    resultText.textContent = resultado;
+    modal.style.display = "block";
+  };
 
-window.onclick = function(event) {
-  if (event.target == modal) {
+  span.onclick = function () {
     modal.style.display = "none";
-  }
-}
+  };
 
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 
-
-
+  countdownTimer = setInterval(countdown, 1000);
 
