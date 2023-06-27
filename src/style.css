@@ -22,8 +22,8 @@ body {
 }
 
 .container {
-  width: 800px;
-  padding: 350px 0 0 160px;
+  width: 600px;
+  padding: 300px 0 0 20px;
   display: none;
   text-align: center;
   margin: auto;
@@ -146,7 +146,7 @@ body {
   padding: 20px;
   width: 80%;
   max-width: 600px;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 
 .close {
@@ -163,4 +163,14 @@ body {
 
 #resultText {
   font-size: 18px;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 2px;
+  text-align: center;
 }

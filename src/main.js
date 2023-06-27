@@ -26,7 +26,7 @@ var resultText = document.getElementById("resultText");
 
 btn.onclick = function() {
   var score = result();
-  var resultado = "Sua pontuação é: " + score;
+  var resultado = "Você fez: " + score + " " + "pontos";
 
   resultText.textContent = resultado;
   modal.style.display = "block";
