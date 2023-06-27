@@ -73,3 +73,22 @@ document.getElementsByClassName('container')[0].style.display = "block";
 
   countdownTimer = setInterval(countdown, 1000);
 
+  const restartBtn = document.getElementById("restartBtn");
+restartBtn.addEventListener("click", restartQuiz);
+
+function restartQuiz() {
+  clearInterval(countdownTimer);
+  secondsLeft = 15;
+  countdownTimer = setInterval(countdown, 1000);
+
+  // Restaurar o estado inicial do quiz aqui
+  // Por exemplo, redefinir as respostas selecionadas, reiniciar o temporizador, redefinir o contador de perguntas, etc.
+
+  // Redirecionar para o começo do quiz na mesma página
+  const firstContainer = document.getElementsByClassName('container')[0];
+  const currentContainer = document.querySelector('.container[style*="display: block"]');
+
+  currentContainer.style.display = "none";
+  firstContainer.style.display = "block";
+}
+

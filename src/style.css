@@ -12,6 +12,7 @@ body {
   background-image: url(img/cardapio.png);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Lato', sans-serif;
 }
 
 .timer-container {
@@ -21,8 +22,8 @@ body {
   padding: 5px 0 0 5px;
   border-radius: 5px;
   position: absolute;
-  top: 585px;
-  left: 800px;
+  top: 570px;
+  left: 785px;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -30,14 +31,15 @@ body {
   transition: 1s ease-in-out;
 }
 
-
 .container-quiz {
   max-width: 500px;
   margin: 0 auto;
-  padding: 20px 0 0 -33px; /* Ajuste o valor conforme necessário */
+  padding: 10px 0 0 -33px;
+  /* Ajuste o valor conforme necessário */
   background-color: #0a0a0a73;
   border-radius: 5px;
-  text-align: center; /* Centraliza o conteúdo dentro do container */
+  text-align: center;
+  /* Centraliza o conteúdo dentro do container */
 }
 
 .imgQuiz {
@@ -45,7 +47,8 @@ body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 21%; /* Ajuste o valor para mover o elemento mais para cima */
+  top: 21%;
+  /* Ajuste o valor para mover o elemento mais para cima */
   left: 50%;
   transform: translate(-50%, -50%);
   width: 340px;
@@ -56,15 +59,16 @@ body {
   width: 180px;
   margin: 0 auto;
 }
+
 .container {
   width: 360px;
-  padding: 60px 5px 0 0; /* Ajuste o valor do padding-top para mover o elemento mais para baixo */
+  padding: 20px 5px 0 0;
+  /* Ajuste o valor do padding-top para mover o elemento mais para baixo */
   display: none;
   text-align: center;
   margin: auto;
   color: white;
 }
-
 
 .pergunta1,
 .pergunta2,
@@ -78,9 +82,6 @@ body {
 .alternativas {
   margin-bottom: 10px;
 }
-
-
-
 
 .alternativas label {
   display: inline-block;
@@ -265,6 +266,67 @@ body {
 
 #resultText {
   font-size: 20px;
+}
+
+.wrapper {
+  position: fixed;
+  top: 92%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+}
+
+.link_wrapper {
+  position: relative;
+}
+
+a {
+  display: block;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #333;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3px solid #333;
+  transition: all .35s;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border: 3px solid transparent;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 0;
+  top: 0;
+  z-index: -1;
+  transition: all .35s;
+}
+
+.icon svg {
+  width: 20px;
+  position: absolute;
+  top: calc(70% - 15px);
+  left: calc(65% - 15px);
+  transform: rotate(-45deg);
+  fill: #fffb00;
+  transition: all .35s;
+}
+
+a:hover {
+  width: 150px;
+  border: 3px solid #fffb00;
+  background: transparent;
+  color: #fffb00;
+}
+
+a:hover+.icon {
+  border: 3px solid #fffb00;
+  right: -25%;
 }
 
 .footer {
