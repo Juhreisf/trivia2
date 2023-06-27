@@ -14,27 +14,103 @@ body {
   background-size: cover;
 }
 
+.imgQuiz {
+  position: relative;
+  width: 340px;
+  height: 100px;
+  margin: 0 auto; /* Adicione esta propriedade */
+}
+
+.imagem {width: 180px;
+  position: absolute;
+  top: 22%; /* Ajuste o valor para mover a imagem mais para cima */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .container-quiz {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 20px 50px 0px 0px;
+  background-color: #0a0a0a73;
+  border-radius: 5px;
 }
 
 .container {
-  width: 600px;
-  padding: 300px 0 0 20px;
+  width: 360px;
+  padding: 30px 0 0;
   display: none;
   text-align: center;
   margin: auto;
   color: white;
-  font-size: 20px;
 }
 
 .pergunta1,
 .pergunta2,
 .pergunta3 {
   padding: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
+.alternativas {
+  margin-bottom: 10px;
+}
+
+.alternativas label {
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  margin: 1px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #fffb00;
+  border: 1px solid #353534;
+  border-radius: 2px;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+  cursor: pointer;
+}
+
+.alternativas label span {
+  pointer-events: none;
+  /* Impede a interação com o texto */
+  position: relative;
+  z-index: 2;
+}
+
+.alternativas label input[type="radio"] {
+  display: none;
+  /* Esconde o input de rádio */
+
+}
+
+.alternativas label:active {
+  transform: translateY(5px);
+  /* Adiciona um deslocamento vertical para simular o efeito de pressionar o botão */
+}
+
+.alternativas label:hover {
+  color: #fff;
+}
+
+.alternativas label:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ff003b;
+  transition: all .35s;
+}
+
+.alternativas label:hover:after {
+  width: 100%;
 }
 
 .cardapio {
@@ -66,18 +142,16 @@ body {
 
 .next:before {
   content: '';
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
+  background: linear-gradient(45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000);
   position: absolute;
   top: -2px;
   left: -2px;
@@ -120,9 +194,11 @@ body {
   0% {
     background-position: 0 0;
   }
+
   50% {
     background-position: 400% 0;
   }
+
   100% {
     background-position: 0 0;
   }
@@ -131,27 +207,28 @@ body {
 .resultado-final {
   display: none;
   position: fixed;
-  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  right: 0;
+  z-index: 9999;
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #b2b2b2f9;
   margin: 20% auto;
   padding: 20px;
   width: 80%;
   max-width: 600px;
-  border-radius: 3px;
+  border-radius: 20px 0 20px 0;
 }
 
 .close {
   float: right;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -162,15 +239,14 @@ body {
 }
 
 #resultText {
-  font-size: 18px;
+  font-size: 20px;
 }
 
-footer {
-  position: absolute;
-  left: 0;
+.footer {
+  position: fixed;
   bottom: 0;
-  width: 100%;
-  background-color: #f8f8f8;
-  padding: 2px;
-  text-align: center;
+  right: 0;
+  color: white;
+  padding: 20px;
+  background-color: transparent;
 }

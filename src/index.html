@@ -1,63 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Fast Food</title>
+  <title>Quiz Fast Food</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+  <div class="imgQuiz">
+    <img  class="imagem"src="img/quiz.png" alt="imagem do logo quiz">
+  </div>
 
   <div class="container-quiz">
 
     <div class="container">
-      <h3 class="pergunta1">Qual desses não é considerado um lanche?</h3>
+      <h3 class="pergunta1">Qual não é considerado um lanche?</h3>
 
-      <input type="radio" name="question1">Podrão<br>
-      <input type="radio" name="question1" >Misto-quente<br>
-      <input type="radio" name="question1" id="correct1">Hot-cat<br>
+      <div class="alternativas">
+        <label><input type="radio" name="question1"><span>Podrão</span></label><br>
+        <label><input type="radio" name="question1"><span>Misto quente</span></label><br>
+        <label><input type="radio" name="question1" id="correct1"><span>Hot-cat</span></label><br>
+      </div>
+
       <button class="next" onclick="next(1)">Next</button>
     </div>
 
     <div class="container">
-      <h3 class="pergunta2">Qual desses não é considerado uma sobremesa?</h3>
+      <h3 class="pergunta2">Qual não é considerado uma sobremesa?</h3>
 
-      <input type="radio" name="question2" id="correct2">petit-lion<br>
-      <input type="radio" name="question2">torta de maça<br>
-      <input type="radio" name="question2" >pastel de belém<br>
+      <div class="alternativas">
+        <label><input type="radio" name="question2" id="correct2"><span>petit-lion</span></label><br>
+        <label><input type="radio" name="question2"><span>torta de maça</span></label><br>
+        <label><input type="radio" name="question2"><span>pastel de belém</span></label><br>
+      </div>
       <button class="next" onclick="next(2)">Next</button>
+
     </div>
 
     <div class="container">
-      <h3 class="pergunta3">Qual desses não é considerado uma bebida?</h3>
+      <h3 class="pergunta3">Qual não é considerado uma bebida?</h3>
 
-      <input type="radio" name="question3">coca-cola<br>
-      <input type="radio" name="question3">ice-tea<br>
-      <input type="radio" name="question3" id="correct3">jacarandá<br>
+      <div class="alternativas">
+        <label><input type="radio" name="question3"><span>coca-cola</span></label><br>
+        <label><input type="radio" name="question3"><span>ice-tea</span></label><br>
+        <label><input type="radio" name="question3" id="correct3"><span>jacarandá</span></label><br>
+      </div>
       <button class="next" id="myBtn">Ver Resultado</button>
+
     </div>
   </div>
-     
-      <div class="resultado-final" id="resultado">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h6>Você finalizou o Quizz!!!</h6>
-          <div id="resultContainer">
-            <p id="resultText"></p>
-          </div>
-        </div>
+
+  <div class="resultado-final" id="resultado">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h6>Você finalizou o Quizz!!!</h6>
+      <div id="resultContainer">
+        <p id="resultText"></p>
       </div>
+    </div>
+  </div>
 
-      
-    <div id="root"></div>
-    <script src="main.js"></script>
 
-      <footer><p>Copyright by © Juliana Reis</p></footer>
+  <div id="root"></div>
+  <script src="main.js"></script>
 
-    
+  <footer class="footer">
+    <p>Copyright by © Juliana Reis</p>
+  </footer>
+
+
 </body>
 
 </html>
