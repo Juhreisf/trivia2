@@ -1,94 +1,126 @@
 document.getElementsByClassName('container')[0].style.display = "block";
 
-  let secondsLeft = 15;
-  const timer = document.getElementById("timer");
-  let countdownTimer;
+const startQuizButton = document.getElementById("startQuizButton");
+const quizContainer = document.getElementById("quizContainer");
 
-  function countdown() {
+let secondsLeft = 15;
+const timer = document.getElementById("timer");
+let countdownTimer;
+let isAnswerSelected = false;
+
+function countdown() {
+  if (!isAnswerSelected) {
     timer.textContent = "Você tem: " + secondsLeft + " segundos";
-
-    if (secondsLeft === 0) {
-      clearInterval(countdownTimer);
-      timer.textContent = "Tempo esgotado!";
-      // Coloque aqui a ação que deseja tomar quando o tempo acabar, como mostrar o resultado final ou avançar para a próxima questão
-      showResult();
-    } else {
-      secondsLeft--;
-    }
+    secondsLeft--;
   }
 
-  function showResult() {
-    const score = result();
-    const resultado = "Você fez: " + score + " pontos";
-
-    resultText.textContent = resultado;
-    modal.style.display = "block";
-  }
-
-  function next(id) {
+  if (secondsLeft === 0) {
     clearInterval(countdownTimer);
-    secondsLeft = 15;
-    countdownTimer = setInterval(countdown, 1000);
-
-    document.getElementsByClassName('container')[id - 1].style.display = "none";
-    document.getElementsByClassName('container')[id].style.display = "block";
+    timer.textContent = "Tempo esgotado!";
+    showResult();
   }
+}
 
-  function result() {
-    let score = 0;
+function showResult() {
+  const score = result();
+  const resultado = "Você fez: " + score + " pontos";
+
+  resultText.textContent = resultado;
+  modal.style.display = "block";
+}
+
+function next(id) {
+  clearInterval(countdownTimer);
+  secondsLeft = 15;
+  countdownTimer = setInterval(countdown, 1000);
+  isAnswerSelected = false;
+
+  document.getElementsByClassName('container')[id - 1].style.display = "none";
+  document.getElementsByClassName('container')[id].style.display = "block";
+}
+
+function result() {
+  let score = 0;
+
+  if (document.querySelector('input[name="question1"]:checked')) {
     if (document.getElementById('correct1').checked) {
       score++;
     }
+  } else {
+    score = 0;
+  }
+
+  if (document.querySelector('input[name="question2"]:checked')) {
     if (document.getElementById('correct2').checked) {
       score++;
     }
+  } else {
+    score = 0;
+  }
+
+  if (document.querySelector('input[name="question3"]:checked')) {
     if (document.getElementById('correct3').checked) {
       score++;
     }
-    return score;
+  } else {
+    score = 0;
   }
 
-  const modal = document.getElementById("resultado");
-  const btn = document.getElementById("myBtn");
-  const span = document.getElementsByClassName("close")[0];
-  const resultText = document.getElementById("resultText");
+  return score;
+}
 
-  btn.onclick = function () {
-    const score = result();
-    const resultado = "Você fez: " + score + " pontos";
+const modal = document.getElementById("resultado");
+const btn = document.getElementById("myBtn");
+const span = document.getElementsByClassName("close")[0];
+const resultText = document.getElementById("resultText");
 
-    resultText.textContent = resultado;
-    modal.style.display = "block";
-  };
+btn.onclick = function () {
+  const score = result();
+  const resultado = "Você fez: " + score + " pontos";
 
-  span.onclick = function () {
+  resultText.textContent = resultado;
+  modal.style.display = "block";
+};
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
     modal.style.display = "none";
-  };
+  }
+};
 
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
+countdownTimer = setInterval(countdown, 1000);
 
-  countdownTimer = setInterval(countdown, 1000);
-
-  const restartBtn = document.getElementById("restartBtn");
+const restartBtn = document.getElementById("restartBtn");
 restartBtn.addEventListener("click", restartQuiz);
 
 function restartQuiz() {
   clearInterval(countdownTimer);
   secondsLeft = 15;
   countdownTimer = setInterval(countdown, 1000);
+  isAnswerSelected = false;
 
-  // Restaurar o estado inicial do quiz aqui
-  // Por exemplo, redefinir as respostas selecionadas, reiniciar o temporizador, redefinir o contador de perguntas, etc.
-
-  // Redirecionar para o começo do quiz na mesma página
   const firstContainer = document.getElementsByClassName('container')[0];
   const currentContainer = document.querySelector('.container[style*="display: block"]');
 
   currentContainer.style.display = "none";
   firstContainer.style.display = "block";
 }
+
+const answerOptions = document.querySelectorAll('input[type="radio"]');
+answerOptions.forEach(function (option) {
+  option.addEventListener("change", function () {
+    isAnswerSelected = true;
+  });
+});
+
+const lastQuestionOptions = document.querySelectorAll('input[name="question3"]');
+lastQuestionOptions.forEach(function (option) {
+  option.addEventListener("click", function () {
+    isAnswerSelected = true;
+  });
+});
 
